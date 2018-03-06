@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>分区文章无线获取</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="keywords" content="分区文章无线获取"/>
+    <meta name="description" content="分区文章无线获取"/>
+    <link rel="stylesheet" href="/resources/js/layui/css/layui.css"/>
+    <link rel="stylesheet" href="/resources/css/global.css"/>
+</head>
+<body>
+
+<div class="layui-container">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md8">
+            <div class="fly-panel">
+                <div class="fly-panel-title fly-filter">
+                    <a>今日头条</a>
+                    <a href="#signin" class="layui-hide-sm layui-show-xs-block fly-right"  style="color: #FF5722;">去签到</a>
+                </div>
+                <ul class="fly-list">
+
+                    <li th:each="news, List : ${newsList}">
+                        <a href="javascript:;" class="fly-avatar">
+                            <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心"/>
+                        </a>
+                        <h2>
+                            <a class="layui-badge">文章</a>
+                            <a th:href="${'/news/' + news.get('id')}" th:text="${news.get('title')}" target="_blank"></a>
+                        </h2>
+                        <div class="fly-list-info">
+                            <a href="javascript:;" >
+                                <cite>贤心</cite>
+                                <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
+                                <i class="layui-badge fly-badge-vip">VIP3</i>
+                            </a>
+                            <span>刚刚</span>
+
+                            <span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>
+                            <span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>
+                            <span class="fly-list-nums">
+                                <i class="iconfont icon-pinglun1" title="回答"></i> 66
+                            </span>
+                        </div>
+                        <div class="fly-list-badge">
+                            <!--
+                            <span class="layui-badge layui-bg-black">置顶</span>
+                            <span class="layui-badge layui-bg-red">精帖</span>
+                            -->
+                        </div>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fly-footer">
+    <p><a href="javascript:;" target="_blank">无线文章</a> 2017 &copy; <a href="javascript:;" target="_blank">文章</a></p>
+    <p>
+        <a href="javascript:;" target="_blank">网站详情</a>
+        <a href="javascript:;" target="_blank">网站详情</a>
+        <a href="javascript:;" target="_blank">网站详情</a>
+    </p>
+</div>
+
+<script src="resources/js/layui/layui.all.js"></script>
+<script>
+    layui.cache.page = '';
+    layui.cache.user = {
+        username: '游客'
+        ,uid: -1
+        ,avatar: '/static/index/images/avatar/00.jpg'
+        ,experience: 83
+        ,sex: '男'
+    };
+    layui.config({
+        version: "3.0.0"
+        ,base: '/resources/js/layui/lay/modules/' //这里实际使用时，建议改成绝对路径
+    }).extend({
+        fly: 'index'
+    }).use('fly');
+</script>
+
+</body>
+</html>
