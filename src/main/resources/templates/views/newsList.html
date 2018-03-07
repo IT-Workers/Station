@@ -11,14 +11,38 @@
     <link rel="stylesheet" href="/resources/css/global.css"/>
 </head>
 <body>
+<div class="fly-header layui-bg-black" style="background-color: #FFFFFF">
+    <div class="layui-container">
+        <a class="fly-logo" href="/">
+            <img src="/resources/img/logos.png" alt="文章"/>
+        </a>
+    </div>
+</div>
 
+<div class="fly-panel fly-column">
+    <div class="layui-container">
+        <ul class="layui-clear">
+            <li class="layui-hide-xs">
+                <a href="/">首页</a>
+            </li>
+            <li th:each="menu, List: ${head_nav_menu}" >
+                <a th:href="${'/news/list?name=' + menu.get('name')}" th:text="${menu.get('name')}" target="_blank"></a>
+            </li>
+        </ul>
+    </div>
+</div>
 <div class="layui-container">
     <div class="layui-row layui-col-space15">
+        <div class="layui-col-md8">
+            <span class="layui-breadcrumb" lay-separator=">">
+              <a href="javascript:void(0)">首页</a>
+              <a href="javascript:void(0)" th:text="${name}">八卦</a>
+            </span>
+        </div>
         <div class="layui-col-md8">
             <div class="fly-panel">
                 <div class="fly-panel-title fly-filter">
                     <a>今日头条</a>
-                    <a href="#signin" class="layui-hide-sm layui-show-xs-block fly-right"  style="color: #FF5722;">去签到</a>
                 </div>
                 <ul class="fly-list">
 
@@ -44,19 +68,39 @@
                                 <i class="iconfont icon-pinglun1" title="回答"></i> 66
                             </span>
                         </div>
-                        <div class="fly-list-badge">
-                            <!--
-                            <span class="layui-badge layui-bg-black">置顶</span>
-                            <span class="layui-badge layui-bg-red">精帖</span>
-                            -->
-                        </div>
                     </li>
+                </ul>
+            </div>
 
-
+            <div class="fly-panel" style="margin-bottom: 0;">
+                <ul class="fly-list">
+                    <div style="text-align: center">
+                        <div class="laypage-main">
+                            <a href="javascript:;" class="laypage-next">更多求解</a>
+                        </div>
+                    </div>
                 </ul>
             </div>
         </div>
+        <div class="layui-col-md4">
+            <dl class="fly-panel fly-list-one">
+                <dt class="fly-panel-title">随机文章</dt>
+                <dd th:each="news , itmes: ${randnews2}">
+                    <a th:href="${'/news/' + news.get('id')}" th:text="${news.get('title')}" target="_blank"></a>
+                </dd>
+            </dl>
+
+            <dl class="fly-panel fly-list-one">
+                <dt class="fly-panel-title">友情连接</dt>
+                <dd th:each="news , itmes: ${randnews2}">
+                    <a th:href="${'/news/' + news.get('id')}" th:text="${news.get('title')}" target="_blank"></a>
+                </dd>
+            </dl>
+
+        </div>
+
     </div>
+
 </div>
 
 <div class="fly-footer">
@@ -68,7 +112,7 @@
     </p>
 </div>
 
-<script src="resources/js/layui/layui.all.js"></script>
+<script src="/resources/js/layui/layui.all.js"></script>
 <script>
     layui.cache.page = '';
     layui.cache.user = {

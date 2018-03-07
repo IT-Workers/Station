@@ -10,7 +10,7 @@ public interface AdminDao {
 
     public int updateHeadNavMenu(long id, String name);
 
-    public int insertkeyWordContent(long id, String source, String title, String name, String conent, String comment);
+    public int insertkeyWordContent(long id, String source, String title, String name, String content, String comment);
 
     public int deleteKetWord(String name);
 }

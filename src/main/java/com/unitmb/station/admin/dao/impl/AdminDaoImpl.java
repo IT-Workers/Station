@@ -24,15 +24,15 @@ public class AdminDaoImpl extends CommonDao implements AdminDao{
     }
 
     @Override
-    public int insertkeyWordContent(long id, String source, String title, String name, String conent, String comment) {
+    public int insertkeyWordContent(long id, String source, String title, String name, String content, String comment) {
 
-        String insert = "INSERT INTO keyword (id, source, title, name, conent, comment)  VALUES(?, ?, ?, ?, ?, ?)";
+        String insert = "INSERT INTO news (id, source, title, keyword, content, comment)  VALUES(?, ?, ?, ?, ?, ?)";
 
-        return jdbcTemplate.update(insert, id, source, title, name, conent, comment);
+        return jdbcTemplate.update(insert, id, source, title, name, content, comment);
     }
 
     @Override
     public int deleteKetWord(String name) {
-        return jdbcTemplate.update("DELETE from keyword where name = ?", name);
+        return jdbcTemplate.update("DELETE from news where keyword = ?", name);
     }
 }

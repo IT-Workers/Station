@@ -18,16 +18,21 @@ public class ViewDaoImpl extends CommonDao implements ViewDao{
 
     @Override
     public List<Map<String, Object>> getListNews(String scoure){
-        return jdbcTemplate.queryForList("select * from keyword where source = ? LIMIT 15", scoure);
+        return jdbcTemplate.queryForList("select * from news where source = ? LIMIT 15", scoure);
     }
 
     @Override
     public Map<String, Object> getNewsContent(String id) {
-        return jdbcTemplate.queryForMap("select conent, comment from keyword where id = ?", id);
+        return jdbcTemplate.queryForMap("select * from news where id = ?", id);
     }
 
     @Override
     public List<Map<String, Object>> getNewsListByName(String name) {
-        return jdbcTemplate.queryForList("select * from keyword where name = ?", name);
+        return jdbcTemplate.queryForList("select * from news where keyword = ?", name);
+    }
+
+    @Override
+    public List<Map<String, Object>> getRandNews() {
+        return jdbcTemplate.queryForList("SELECT * FROM news ORDER BY random() LIMIT 20");
     }
 }

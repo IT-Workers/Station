@@ -34,7 +34,6 @@ public class AdminController extends CommonController{
         HeadNavMenu menu = new HeadNavMenu();
         menu.setId(System.currentTimeMillis());
         menu.setName(name);
-        menu.setHref("www.baidu.com");
 
         if(adminService.addHeadNavMenu(menu)){
             success();

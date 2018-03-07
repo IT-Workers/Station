@@ -33,4 +33,9 @@ public class ViewServiceImpl implements ViewService {
     public List<Map<String, Object>> getNewsListByName(String name) {
         return viewDao.getNewsListByName(name);
     }
+
+    @Override
+    public List<Map<String, Object>> getRandNews() {
+        return viewDao.getRandNews();
+    }
 }

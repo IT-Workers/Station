@@ -22,7 +22,7 @@ public class CommonDao implements InitializingBean {
         /**
          * 关键词
          */
-        String keyword_table_sql = "create table if not exists keyword (id integer primary key not null , source varchar(100), title varchar(1000), name text, conent text, comment text)";
+        String keyword_table_sql = "create table if not exists news (id integer primary key not null , source varchar(100), title varchar(1000), keyword text, content text, comment text)";
         jdbcTemplate.execute(keyword_table_sql);
 
         System.out.println("SQLite init ==========");

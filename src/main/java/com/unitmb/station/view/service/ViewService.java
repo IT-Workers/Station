@@ -12,4 +12,6 @@ public interface ViewService {
     public Map<String, Object> getNewsContent(String id);
 
     public List<Map<String, Object>> getNewsListByName(String name);
+
+    public List<Map<String, Object>> getRandNews();
 }
